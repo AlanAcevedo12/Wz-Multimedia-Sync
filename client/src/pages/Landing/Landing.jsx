@@ -19,8 +19,12 @@ function Landing({ ip, setIp }) {
     }, [])
 
     useEffect(() => {
-        setIp(bulbs[0]?.ip)
-        localStorage.setItem("ip", bulbs[0]?.ip);
+        if (!bulbs.length) return;
+        let coincidencia = bulbs.filter((b) => b.ip === ip)
+        if (coincidencia.length === 0) {
+            localStorage.setItem("ip", bulbs[0]?.ip);
+            setIp(bulbs[0]?.ip)
+        }
     }, [bulbs])
 
     function onChangeHandler(e) {
@@ -59,18 +63,24 @@ function Landing({ ip, setIp }) {
                     If it not appears, check that is plugged in and restart the app.
                 </p>
             </div>
-            <select id={styles.ipSelect} onChange={onChangeHandler} defaultValue={bulbs[0]}>
+            <select id={styles.ipSelect} onChange={onChangeHandler} value={ip}>
                 {
                     bulbs?.map((b, k) => {
+                        if (b.ip === ip) {
+                            <option className={styles.ipOption} value={b.ip} key={k}>
+                                {b.ip}
+                            </option>
+                        }
                         return (
                             <option className={styles.ipOption} value={b.ip} key={k}>
                                 {b.ip}
                             </option>
                         )
+
                     })
                 }
                 {
-                    console.log(bulbs)
+                    // console.log(bulbs)
                 }
             </select>
         </div>
