@@ -3,23 +3,27 @@ import styles from "./Landing.module.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Landing({ip, setIp}) {
+function Landing({ ip, setIp }) {
     const [bulbs, setBulbs] = useState([]);
-    
+
     useEffect(() => {
         async function fetch() {
-            let { data } = await axios.get("http://localhost:3001/getBulbs")
-            setBulbs(data);
+            try {
+                let { data } = await axios.get("http://localhost:3001/getBulbs")
+                setBulbs(data);
+            } catch (e) {
+                console.log(e);
+            }
         }
         fetch();
     }, [])
-    
+
     useEffect(() => {
         setIp(bulbs[0]?.ip)
         localStorage.setItem("ip", bulbs[0]?.ip);
-    },[bulbs])
+    }, [bulbs])
 
-    function onChangeHandler(e){
+    function onChangeHandler(e) {
         setIp(e.target.value);
         localStorage.setItem("ip", e.target.value);
     }

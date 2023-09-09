@@ -10,17 +10,17 @@ function Audio({ ip }) {
     const PORCENTAJE = 256;
 
 
-    //ver dispositivos multimedia
-    useEffect(() => {
-        const devices = navigator.mediaDevices
-            .enumerateDevices()
-            .then(disp => {
-                disp.forEach((d, i) => {
-                    if (d.kind === "audiooutput")
-                        console.log("audio", d, i)
-                })
-            })
-    }, [])
+    //-----------------ver dispositivos multimedia----------------------------
+    // useEffect(() => {
+    //     const devices = navigator.mediaDevices
+    //         .enumerateDevices()
+    //         .then(disp => {
+    //             disp.forEach((d, i) => {
+    //                 if (d.kind === "audiooutput")
+    //                     console.log("audio", d, i)
+    //             })
+    //         })
+    // }, [])
 
     //reloj de 250ms
     useEffect(() => {
@@ -130,6 +130,11 @@ function Audio({ ip }) {
                 }
                 <div id={styles.canvasContainer}>
                     <canvas id={styles.canvas} width="800" height="300"></canvas>
+                </div>
+                <div id={styles.descContainer}>
+                    <p id={styles.description}>
+                        Connected at {ip}
+                    </p>
                 </div>
                 <div id={styles.descContainer}>
                     <p id={styles.description}>

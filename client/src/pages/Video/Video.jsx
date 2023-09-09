@@ -58,7 +58,7 @@ function Video({ ip }) {
     })
       .then(
         async (mediaStream) => {
-          console.log(mediaStream);
+          // console.log(mediaStream);
           track = mediaStream.getVideoTracks()[0];
           const media_processor = new window.MediaStreamTrackProcessor({ track });
           const reader = media_processor.readable.getReader();
