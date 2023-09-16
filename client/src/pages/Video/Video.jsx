@@ -41,9 +41,22 @@ function Video({ ip }) {
         rgb.g = ~~(rgb.g / count);
         rgb.b = ~~(rgb.b / count);
 
-        rgb.ip = ip;
+
+        //-----------experimental------------------
+        //---- "makes the red more red if its better than the others" -----
+        if (rgb.r > rgb.b + 10 && rgb.r > rgb.g + 10)
+            rgb.r += 25;
+
+        if (rgb.g > rgb.b + 10 && rgb.g > rgb.r + 10)
+            rgb.g += 25;
+
+        if (rgb.b > rgb.g + 10 && rgb.b > rgb.r + 10)
+            rgb.b += 25;
 
         // console.log(rgb)
+
+        rgb.ip = ip;
+
         sendMessagesRGB(rgb)
     }
 

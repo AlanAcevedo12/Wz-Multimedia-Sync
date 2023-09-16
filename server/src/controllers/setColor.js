@@ -5,25 +5,28 @@ const { sendMessage } = require("../utilities/sendMessage.js")
 const router = Router();
 
 router.post('/setColor', async (req, res) => {
-    var response;
     const { color } = req.query;
     const { r, g, b, a, ip } = req.body;
-    // console.log(a, ip)
+    console.log(r, g, b, a, ip)
     try {
         if (!ip) throw new Error;
-        if (req.body) {
-            let color
-            if (a) {
-                color = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b, dimming: a } });
-            } else {
-                color = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b } });
-            }
-            response = sendMessage(color, ip);
+        if (!color && !(r >= 0 && g >= 0 && b >= 0)) {
+            throw new Error;
+        }
+        if (a) {
+            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b, dimming: a } });
+            sendMessage(colorRGB, ip);
+            res.sendStatus(200);
+        }
+        if (r >= 0 && g >= 0 && b >= 0) {
+            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b } });
+            sendMessage(colorRGB, ip);
+            res.sendStatus(200);
         }
         if (color) {
-            response = sendMessage(lightColors[color], ip);
+            sendMessage(lightColors[color], ip);
+            res.sendStatus(200);
         }
-        res.sendStatus(200);
     } catch (e) {
         res.sendStatus(400);
     }
