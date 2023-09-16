@@ -14,7 +14,7 @@ export function sendMessagesRGB(data) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://localhost:3001/setColor');
     xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-    // console.log(data)
+    console.log(data)
     xhr.send(JSON.stringify(data));
   } catch (e) {
     console.log(e);

@@ -13,7 +13,7 @@ router.post('/setColor', async (req, res) => {
             throw new Error;
         }
         if (a) {
-            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, dimming: a } });
+            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b, dimming: a } });
             sendMessage(colorRGB, ip);
             res.sendStatus(200);
         }

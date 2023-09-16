@@ -9,7 +9,7 @@ function Video({ ip }) {
         setTimeout(() => {
             if (tick === 1) setTick(0)
             else setTick(tick + 1)
-            getCanvasRFG();
+            if (isSync) getCanvasRFG();
         }, 50);
     }, [tick])
 
