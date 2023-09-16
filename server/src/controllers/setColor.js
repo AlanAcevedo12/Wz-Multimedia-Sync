@@ -7,14 +7,13 @@ const router = Router();
 router.post('/setColor', async (req, res) => {
     const { color } = req.query;
     const { r, g, b, a, ip } = req.body;
-    console.log(r, g, b, a, ip)
     try {
         if (!ip) throw new Error;
-        if (!color && !(r >= 0 && g >= 0 && b >= 0)) {
+        if (!color && !(r >= 0 && g >= 0 && b >= 0) && !(a >= 0)) {
             throw new Error;
         }
         if (a) {
-            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, r, g, b, dimming: a } });
+            let colorRGB = JSON.stringify({ method: "setPilot", params: { state: true, dimming: a } });
             sendMessage(colorRGB, ip);
             res.sendStatus(200);
         }

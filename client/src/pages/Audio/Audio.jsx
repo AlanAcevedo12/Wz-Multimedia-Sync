@@ -122,11 +122,13 @@ function Audio({ ip }) {
                             <button className={styles.buttons} onClick={() => onClick()}>Start Sync</button>
                         </div>
                         :
-                        <div id={styles.descContainer}>
-                            <p id={styles.description}>
-                                Syncing audio...
-                            </p>
-                        </div>
+                        <>
+                            <div id={styles.descContainer}>
+                                <p id={styles.description}>
+                                    Syncing audio...
+                                </p>
+                            </div>
+                        </>
                 }
                 <div id={styles.canvasContainer}>
                     <canvas id={styles.canvas} width="800" height="300"></canvas>
