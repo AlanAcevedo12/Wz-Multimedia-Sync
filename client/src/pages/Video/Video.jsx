@@ -95,6 +95,12 @@ function Video({ ip }) {
             )
     }
 
+    function rangeChangeHandler(e) {
+        let { value } = e.target;
+        // console.log(value)
+        sendMessagesRGB({ a: parseInt(value), ip })
+    }
+
     return (
         <div className="Video" id={styles.videoContainer}>
             <div id={styles.mainContainer}>
@@ -120,6 +126,12 @@ function Video({ ip }) {
                     <p id={styles.description}>
                         Connected at {ip}
                     </p>
+                </div>
+                <div id={styles.dimmingContainer}>
+                    <p id={styles.description}>
+                        Change brightness
+                    </p>
+                    <input id={styles.dimmingInput} type="range" min={10} max={100} onChange={rangeChangeHandler}/>
                 </div>
             </div>
         </div>

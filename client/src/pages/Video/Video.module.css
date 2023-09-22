@@ -69,3 +69,38 @@
     font-size: 1.5rem;
     color: white;
 }
+
+#dimmingContainer {
+    /* background-color: red; */
+}
+
+#dimmingInput {
+    width: 15rem;
+}
+
+input {
+    appearance: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: var(--blackColor);
+    height: 1.4rem;
+    border-radius: 1.4rem; 
+    border-color: var(--aquaColor);
+    border-style: solid;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    background-color: var(--aquaColor);
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 0.7rem;
+    margin-top: -0.7rem;    
+ }

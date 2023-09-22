@@ -2,7 +2,8 @@ const { Router } = require("express");
 require('dotenv').config();
 const dgram = require('node:dgram');
 const { PORT, BULB_IP } = process.env;
-const { LocalStorage, JSONStorage } = require('node-localstorage')
+const { LocalStorage, JSONStorage } = require('node-localstorage');
+const searchBulbs = require("../utilities/searchBulbs");
 
 const router = Router();
 

@@ -12,7 +12,7 @@ function sendMessage(message, ip) {
                 socket.setBroadcast(true)
                 socket.send(message, PORT, ip)
                 socket.on("message", (msg, rinfo) => {
-                    recivedMessage = JSON.parse(msg.toString("utf-8"));
+                    recivedMessage = msg.toString("utf-8");
                 })
             }
         )
